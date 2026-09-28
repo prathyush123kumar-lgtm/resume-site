@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Resume of E. Prathyush Kumar — B.Tech ISE Student, Web Developer, Python enthusiast." />
+  <title>Resume — E. Prathyush Kumar</title>
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+  <link rel="stylesheet" href="/styles/animations.css" />
+  <script>(function(){var s=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',s);})();</script>
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="/pages/index.html" class="nav-logo"><div class="logo-badge" aria-hidden="true">EP</div><span>Prathyush Kumar</span></a>
+        <ul class="nav-links" role="list">
+          <li><a href="/pages/index.html">Home</a></li>
+          <li><a href="/pages/index.html#about">About</a></li>
+          <li><a href="/pages/index.html#skills">Skills</a></li>
+          <li><a href="/pages/projects.html">Projects</a></li>
+          <li><a href="/pages/resume.html" class="active" aria-current="page">Resume</a></li>
+          <li><a href="/pages/index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon">🌙</span></button>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </nav>
+    <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile navigation">
+      <a href="/pages/index.html">Home</a>
+      <a href="/pages/index.html#about">About</a>
+      <a href="/pages/resume.html">Resume</a>
+      <a href="/pages/projects.html">Projects</a>
+      <a href="/pages/index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main style="padding-top:var(--navbar-height)">
+    <section class="section" aria-label="Resume">
+      <div class="container" style="max-width:860px">
+
+        <!-- Header -->
+        <div class="section-header animate-on-scroll animate-fade-up" style="margin-bottom:var(--space-10)">
+          <span class="section-label">My Background</span>
+          <h1 class="section-title">Resume</h1>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="section-subtitle">A complete overview of my education, projects, and skills.</p>
+          <a href="/assets/documents/resume.pdf" download class="btn btn-primary" style="margin-top:var(--space-6)" aria-label="Download PDF resume">
+            <span aria-hidden="true">⬇</span> Download PDF Resume
+          </a>
+        </div>
+
+        <!-- Education Timeline -->
+        <div class="animate-on-scroll animate-fade-up">
+          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-8);display:flex;align-items:center;gap:var(--space-3)">
+            <span aria-hidden="true">🎓</span> Education
+          </h2>
+          <div class="timeline" aria-label="Education history">
+            <div class="timeline-item">
+              <div class="timeline-dot active" aria-hidden="true"></div>
+              <p class="timeline-date">2024 – 2028 (Expected)</p>
+              <h3 class="timeline-title">Bachelor of Technology — Information Science and Engineering</h3>
+              <p class="timeline-institution">St. Aloysius (Deemed to be University), Mangaluru, Karnataka</p>
+              <ul class="timeline-highlights" aria-label="Education highlights">
+                <li>Currently in 2nd Year, 3rd Semester</li>
+                <li>Specialising in Information Science and Engineering</li>
+                <li>Active participant in hackathons and collaborative coding projects</li>
+                <li>Building real-world web applications alongside coursework</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-12) 0" aria-hidden="true" />
+
+        <!-- Projects Timeline -->
+        <div class="animate-on-scroll animate-fade-up">
+          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-8);display:flex;align-items:center;gap:var(--space-3)">
+            <span aria-hidden="true">🛠️</span> Projects
+          </h2>
+          <div class="timeline" id="resume-projects-timeline" aria-label="Project history">
+            <p class="text-muted" aria-live="polite">Loading…</p>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-12) 0" aria-hidden="true" />
+
+        <!-- Skills -->
+        <div class="animate-on-scroll animate-fade-up">
+          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-8);display:flex;align-items:center;gap:var(--space-3)">
+            <span aria-hidden="true">⚡</span> Skills
+          </h2>
+          <div id="resume-skills" aria-live="polite">
+            <p class="text-muted">Loading…</p>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-12) 0" aria-hidden="true" />
+
+        <!-- Languages -->
+        <div class="animate-on-scroll animate-fade-up">
+          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-6);display:flex;align-items:center;gap:var(--space-3)">
+            <span aria-hidden="true">🌐</span> Languages Spoken
+          </h2>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)" aria-label="Languages spoken">
+            <span class="skill-pill">🇬🇧 English — Professional</span>
+            <span class="skill-pill">🇮🇳 Hindi — Professional</span>
+            <span class="skill-pill">🇮🇳 Kannada — Native</span>
+            <span class="skill-pill">🇮🇳 Malayalam — Conversational</span>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-12) 0" aria-hidden="true" />
+
+        <!-- Hackathon Interest -->
+        <div class="animate-on-scroll animate-fade-up">
+          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-6);display:flex;align-items:center;gap:var(--space-3)">
+            <span aria-hidden="true">🏆</span> Hackathon &amp; Collaboration
+          </h2>
+          <div class="card">
+            <p style="color:var(--color-text-muted);line-height:var(--leading-relaxed)">
+              Enthusiastic hackathon participant actively seeking opportunities in <strong>web and software development tracks</strong>.
+              Comfortable working on the <strong>front end</strong> or <strong>Python backend</strong> of a team project, with a strong
+              drive to build and ship working prototypes quickly under time pressure.
+            </p>
+            <div style="margin-top:var(--space-4);display:flex;gap:var(--space-3);flex-wrap:wrap">
+              <span class="badge">🎨 Front-End Developer</span>
+              <span class="badge">🐍 Python Backend</span>
+              <span class="badge">⚡ Rapid Prototyping</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 E. Prathyush Kumar</p>
+        <button id="back-to-top" aria-label="Back to top">↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/scripts/theme-toggle.js"></script>
+  <script src="/scripts/navbar.js"></script>
+  <script src="/scripts/scroll-anim.js"></script>
+  <script src="/scripts/fetch-data.js"></script>
+  <script src="/scripts/smooth-scroll.js"></script>
+</body>
+</html>

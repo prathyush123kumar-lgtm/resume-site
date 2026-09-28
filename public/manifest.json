@@ -1,0 +1,16 @@
+{
+  "name": "E. Prathyush Kumar — Portfolio",
+  "short_name": "Prathyush",
+  "description": "Personal portfolio and resume of E. Prathyush Kumar — ISE Student & Web Developer.",
+  "start_url": "/pages/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/public/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

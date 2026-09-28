@@ -1,0 +1,145 @@
+{
+  "personal": {
+    "firstName": "Prathyush",
+    "lastName": "Kumar",
+    "fullName": "E. Prathyush Kumar",
+    "title": "Information Science Engineering Student & Web Developer",
+    "email": "prathyush123kumar@gmail.com",
+    "location": {
+      "city": "Mangaluru",
+      "state": "Karnataka",
+      "country": "India",
+      "display": "Mangaluru, Karnataka, India"
+    },
+    "bio": "Second-year Information Science and Engineering student at St. Aloysius (Deemed to be University), Mangaluru, with hands-on experience building web applications using Python, Flask, HTML, and CSS. Proficient in C and Java for systems-level and object-oriented programming. Practiced in version control with Git and GitHub for collaborative and individual project management. Actively seeking hackathon and collaborative development opportunities in web and software engineering, with a focus on rapid prototyping and delivering functional, user-facing products.",
+    "shortBio": "Web developer and CS student building tools that solve real, everyday problems.",
+    "socialLinks": {
+      "github": "https://github.com/prathyush123kumar-lgtm",
+      "email": "mailto:prathyush123kumar@gmail.com",
+      "linkedin": "https://linkedin.com/in/prathyushkumar"
+    }
+  },
+  "education": [
+    {
+      "id": 1,
+      "degree": "Bachelor of Technology (B.Tech)",
+      "branch": "Information Science and Engineering",
+      "institution": "St. Aloysius (Deemed to be University)",
+      "location": "Mangaluru, Karnataka, India",
+      "year": "2024 – 2028 (Expected)",
+      "currentYear": "2nd Year, 3rd Semester",
+      "status": "current",
+      "highlights": [
+        "Specialising in Information Science and Engineering",
+        "Active participant in hackathons and collaborative coding projects",
+        "Building real-world web applications alongside coursework"
+      ]
+    }
+  ],
+  "skills": {
+    "proficient": [
+      { "name": "Python", "icon": "python.svg", "category": "language", "description": "Backend scripting, Flask web apps, file automation" },
+      { "name": "HTML5", "icon": "html5.svg", "category": "web", "description": "Semantic markup, accessibility, SEO-friendly structure" },
+      { "name": "CSS3", "icon": "css3.svg", "category": "web", "description": "Responsive layouts, Flexbox, Grid, animations" },
+      { "name": "C", "icon": "c.svg", "category": "language", "description": "Systems programming, data structures, algorithms" },
+      { "name": "Java", "icon": "java.svg", "category": "language", "description": "Object-oriented programming, core Java concepts" },
+      { "name": "Flask", "icon": "flask.svg", "category": "web", "description": "Python micro-framework for REST APIs and web apps" },
+      { "name": "Git", "icon": "git.svg", "category": "tool", "description": "Version control, branching, collaborative workflows" },
+      { "name": "GitHub", "icon": "github.svg", "category": "tool", "description": "Repository hosting, project management, open source" }
+    ],
+    "familiar": [
+      { "name": "JavaScript", "icon": "javascript.svg", "category": "web", "description": "DOM manipulation, event handling, fetch API" },
+      { "name": "VS Code", "icon": "vscode.svg", "category": "tool", "description": "Primary development environment with extensions" },
+      { "name": "Linux", "icon": "linux.svg", "category": "tool", "description": "Basic command-line navigation and shell scripting" }
+    ],
+    "currentlyLearning": [
+      { "name": "JavaScript (ES6+)", "icon": "javascript.svg", "category": "web" },
+      { "name": "SQL / SQLite", "icon": "sql.svg", "category": "language" },
+      { "name": "REST API Design", "icon": "api.svg", "category": "web" },
+      { "name": "Node.js", "icon": "nodejs.svg", "category": "web" }
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "slug": "document-converter",
+      "title": "Document Conversion Web App",
+      "shortDescription": "A web application for converting documents between formats and compressing files.",
+      "longDescription": "A full-featured web application built with Python and Flask that enables users to convert documents between Word (.docx) and PDF formats, and compress files — consolidating the most common document-handling tasks into a single, accessible browser interface. The backend handles file I/O, format conversion, and temporary storage securely.",
+      "techStack": ["Python", "Flask", "HTML5", "CSS3"],
+      "category": "python",
+      "status": "in-progress",
+      "featured": true,
+      "githubUrl": "https://github.com/prathyush123kumar-lgtm/document-converter",
+      "liveUrl": null,
+      "imageUrl": "/assets/images/project-document-converter.webp",
+      "highlights": [
+        "Backend built with Python and Flask for file processing",
+        "Supports Word-to-PDF and PDF-to-Word conversion",
+        "File compression to reduce upload/download sizes",
+        "Clean, minimal browser interface for ease of use"
+      ],
+      "sortOrder": 1
+    },
+    {
+      "id": 2,
+      "slug": "lectures-website",
+      "title": "Lectures Website",
+      "shortDescription": "A structured static website organising university lecture content for easy student access.",
+      "longDescription": "A static website designed and built to centralise and organise lecture content for university students. Provides a clear, intuitive navigation structure so classmates can quickly locate course materials, notes, and resources without digging through folders or messaging peers.",
+      "techStack": ["HTML5", "CSS3"],
+      "category": "web",
+      "status": "completed",
+      "featured": true,
+      "githubUrl": "https://github.com/prathyush123kumar-lgtm/lectures-website",
+      "liveUrl": "https://prathyush123kumar-lgtm.github.io/lectures-website",
+      "imageUrl": "/assets/images/project-lectures-website.webp",
+      "highlights": [
+        "Organised lecture content into easily navigable sections",
+        "Mobile-responsive layout for access on any device",
+        "Clean, distraction-free design focused on readability",
+        "Used by classmates for quick resource lookup"
+      ],
+      "sortOrder": 2
+    },
+    {
+      "id": 3,
+      "slug": "resume-website",
+      "title": "Personal Resume Website",
+      "shortDescription": "A personal portfolio site presenting skills, education, and projects in a recruiter-friendly layout.",
+      "longDescription": "A personal portfolio and resume website designed and built to present professional skills, educational background, and project work in a modern, recruiter-friendly layout. Features a clean design system, dark and light mode toggle, interactive project showcase, and a working contact form.",
+      "techStack": ["HTML5", "CSS3", "JavaScript", "Node.js", "Express"],
+      "category": "web",
+      "status": "completed",
+      "featured": true,
+      "githubUrl": "https://github.com/prathyush123kumar-lgtm/resume-site",
+      "liveUrl": "https://prathyushkumar.vercel.app",
+      "imageUrl": "/assets/images/project-resume-website.webp",
+      "highlights": [
+        "Built with vanilla HTML, CSS, and JavaScript — no heavy frameworks",
+        "Dark/Light mode toggle with localStorage persistence",
+        "Fully responsive across mobile, tablet, and desktop",
+        "Working contact form with backend validation and rate limiting"
+      ],
+      "sortOrder": 3
+    }
+  ],
+  "languages": [
+    { "name": "English", "proficiency": "Professional" },
+    { "name": "Hindi", "proficiency": "Professional" },
+    { "name": "Kannada", "proficiency": "Native" },
+    { "name": "Malayalam", "proficiency": "Conversational" }
+  ],
+  "interests": [
+    "Hackathon participation — web and software development tracks",
+    "Building tools that solve real, everyday problems",
+    "Open source contribution and collaborative coding",
+    "Front-end development and UI/UX design",
+    "Python scripting and automation"
+  ],
+  "hackathon": {
+    "status": "actively seeking",
+    "roles": ["Front-end Developer", "Python Backend Developer"],
+    "description": "Enthusiastic hackathon participant focused on web and software development tracks. Comfortable working on the front end or Python backend of a team project, with a strong drive to build and ship working prototypes quickly under time pressure."
+  }
+}
