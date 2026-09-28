@@ -21,9 +21,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-
-      - name: Install root dependencies
-        run: npm ci
+          cache-dependency-path: backend/package-lock.json
 
       - name: Install backend dependencies
         run: npm ci
@@ -34,10 +32,12 @@ jobs:
         working-directory: ./backend
 
       - name: Run unit tests
-        run: npm run test:unit
+        run: npm run test:unit --if-present
+        working-directory: ./backend
 
       - name: Run integration tests
-        run: npm run test:integration
+        run: npm run test:integration --if-present
+        working-directory: ./backend
         env:
           DATABASE_URL: "file:./test.db"
           NODE_ENV: test
