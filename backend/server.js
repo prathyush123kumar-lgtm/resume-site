@@ -29,6 +29,7 @@ const prisma = new PrismaClient();
 const app    = express();
 const PORT   = process.env.PORT || 4000;
 const isProd = process.env.NODE_ENV === 'production';
+app.set('trust proxy', 1);
 
 /* ══════════════════════════════════════════════════════════
    MIDDLEWARE STACK
@@ -95,9 +96,18 @@ const contactLimiter = rateLimit({
 });
 
 /* ══════════════════════════════════════════════════════════
-   HELPER: Serve static frontend files
+   HELPER: Serve only public frontend files
    ══════════════════════════════════════════════════════════ */
-app.use(express.static(path.join(__dirname, '..')));
+const siteRoot = path.join(__dirname, '..');
+app.use('/styles', express.static(path.join(siteRoot, 'styles')));
+app.use('/scripts', express.static(path.join(siteRoot, 'scripts')));
+app.use('/pages', express.static(path.join(siteRoot, 'pages')));
+app.use('/public', express.static(path.join(siteRoot, 'public')));
+app.use(express.static(path.join(siteRoot, 'public')));
+app.use('/resume', express.static(path.join(siteRoot, 'resume')));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(siteRoot, 'pages', 'index.html'));
+});
 
 /* ══════════════════════════════════════════════════════════
    ROUTES
@@ -163,14 +173,22 @@ app.get('/api/projects/:slug', async function (req, res) {
 // ── POST /api/contact ────────────────────────────────────
 app.post('/api/contact', contactLimiter, async function (req, res) {
   try {
-    const { name, email, subject, message } = req.body;
+    const { name, email, subject, message } = req.body || {};
 
     // Server-side validation (never rely only on client)
     const errors = [];
-    if (!name    || name.trim().length    < 2   || name.length    > 100) errors.push('name: must be 2–100 characters.');
-    if (!email   || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))           errors.push('email: invalid format.');
-    if (!subject || subject.trim().length < 2   || subject.length > 200) errors.push('subject: must be 2–200 characters.');
-    if (!message || message.trim().length < 10  || message.length > 1000)errors.push('message: must be 10–1000 characters.');
+    if (typeof name !== 'string' || name.trim().length < 2 || name.trim().length > 100) {
+      errors.push('name: must be 2–100 characters.');
+    }
+    if (typeof email !== 'string' || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.push('email: invalid format.');
+    }
+    if (typeof subject !== 'string' || subject.trim().length < 2 || subject.trim().length > 200) {
+      errors.push('subject: must be 2–200 characters.');
+    }
+    if (typeof message !== 'string' || message.trim().length < 10 || message.trim().length > 1000) {
+      errors.push('message: must be 10–1000 characters.');
+    }
 
     if (errors.length > 0) {
       return res.status(400).json({ error: errors.join(' ') });
@@ -309,11 +327,13 @@ function safeParseJSON(str, fallback) {
 /* ══════════════════════════════════════════════════════════
    START SERVER
    ══════════════════════════════════════════════════════════ */
-app.listen(PORT, function () {
-  console.log(`\n🚀 Resume API running at http://localhost:${PORT}`);
-  console.log(`   Environment : ${process.env.NODE_ENV || 'development'}`);
-  console.log(`   Health check: http://localhost:${PORT}/api/health`);
-  console.log(`   Easter egg  : http://localhost:${PORT}/api/resume/raw\n`);
-});
+if (require.main === module) {
+  app.listen(PORT, function () {
+    console.log(`\n🚀 Resume API running at http://localhost:${PORT}`);
+    console.log(`   Environment : ${process.env.NODE_ENV || 'development'}`);
+    console.log(`   Health check: http://localhost:${PORT}/api/health`);
+    console.log(`   Easter egg  : http://localhost:${PORT}/api/resume/raw\n`);
+  });
+}
 
 module.exports = app; // exported for testing with supertest

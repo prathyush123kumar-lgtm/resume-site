@@ -49,9 +49,6 @@ cd resume-site
 
 ### 2. Install dependencies
 ```bash
-# Root dependencies (testing tools)
-npm install
-
 # Backend dependencies
 cd backend
 npm install
@@ -67,10 +64,10 @@ cp backend/.env.example backend/.env
 ### 4. Set up the database
 ```bash
 cd backend
-npx prisma migrate dev --name init
-npx prisma generate
+npm run prisma:migrate -- --name init
+npm run prisma:generate
+npm run seed             # Populate with project data
 cd ..
-node database/seed.js    # Populate with project data
 ```
 
 ### 5. Run the development server
@@ -88,8 +85,7 @@ npm run dev
 
 ```
 resume-site/
-├── assets/              # Images, icons, downloadable PDF resume
-├── components/          # Reusable HTML component snippets
+├── assets/              # Optional images, icons, downloadable PDF resume
 ├── database/            # Prisma schema, migrations, SQLite DB, seed script
 ├── documentation/       # Markdown case-study articles
 ├── pages/               # Complete HTML pages
@@ -101,7 +97,6 @@ resume-site/
 ├── resume/              # resume-data.json (single source of truth)
 ├── scripts/             # Client-side JavaScript modules
 ├── styles/              # CSS — global.css, components.css, animations.css
-├── tests/               # Unit, integration, and E2E tests
 ├── backend/             # Express server, .env, package.json
 └── .github/workflows/   # GitHub Actions CI/CD
 ```
@@ -135,12 +130,16 @@ resume-site/
 
 ---
 
-## ✅ Testing
+## ✅ Validation
+
+The repository currently uses syntax checks and Prisma schema validation; there is no separate test suite checked into the repository.
 
 ```bash
-npm run test:unit         # Unit tests (Jest)
-npm run test:integration  # API integration tests (Supertest)
-npm run test:e2e          # End-to-end tests (Playwright)
+cd backend
+npm ci
+npm run check
+npm run prisma:validate
+npm audit --audit-level=high
 ```
 
 ---
