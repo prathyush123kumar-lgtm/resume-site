@@ -1,39 +1,61 @@
-# Node modules & build artifacts
+# Dependencies
 node_modules/
-dist/
-build/
-.astro/
+backend/node_modules/
+/.pnp
+.pnp.js
 
-# Environment secrets — NEVER commit
+# Environment variables
 .env
-.env.local
-.env.production
-.env.staging
+.env.*
+!.env.example
+!.env.template
 
-# Database files
-database/dev.db
+# Databases
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+dev.db
+dev.db-journal
 database/*.db
 database/*.db-journal
 database/*.db-shm
 database/*.db-wal
 
-# OS clutter
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Editor settings
-.vscode/settings.json
-.idea/
-
 # Logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 
-# Lighthouse CI output
-.lighthouseci/
+# OS and Editor Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
 
-# Playwright test results
-test-results/
-playwright-report/
+# Testing and Build/Generated Output
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# Scratch and Temp files (specific to your workspace)
+scratch/

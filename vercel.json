@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/pages/index.html"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "https://YOUR_RENDER_BACKEND_URL/api/$1"
+    }
+  ]
+}

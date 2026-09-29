@@ -2,19 +2,14 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
   pull_request:
-    branches: [main]
+    branches: ["main"]
 
 jobs:
-  # ── Lint & Test ──────────────────────────────────────────
   test:
-    name: Lint & Test
+    name: Validate Backend
     runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: "file:./test.db"
-      NODE_ENV: test
-      FRONTEND_ORIGIN: "http://localhost:3000"
 
     steps:
       - name: Checkout repository
@@ -23,29 +18,29 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "backend/package-lock.json"
 
       - name: Install backend dependencies
-        run: npm ci
         working-directory: ./backend
+        run: npm ci
+
+      - name: Generate Prisma Client
+        working-directory: ./backend
+        run: npx prisma generate --schema=../database/prisma/schema.prisma
+
+      - name: Syntax Check Backend
+        working-directory: ./backend
+        run: node --check server.js
 
       - name: Security audit
+        working-directory: ./backend
         run: npm audit --audit-level=high
-        working-directory: ./backend
 
-      - name: Validate backend
-        run: npm run check
-        working-directory: ./backend
+      - name: Test status
+        run: echo "No automated test suite is currently configured."
 
-      - name: Validate Prisma schema
-        run: npm run prisma:validate
-        working-directory: ./backend
-
-      - name: Generate Prisma client
-        run: npm run prisma:generate
-        working-directory: ./backend
-
-  # ── Deploy Frontend (Vercel) ─────────────────────────────
   deploy-frontend:
     name: Deploy Frontend to Vercel
     needs: test
@@ -53,14 +48,15 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
         env:
-          VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-  # ── Deploy Backend (Render) ──────────────────────────────
   deploy-backend:
     name: Deploy Backend to Render
     needs: test
@@ -69,5 +65,4 @@ jobs:
 
     steps:
       - name: Trigger Render Deploy Hook
-        run: |
-          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
