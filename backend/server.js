@@ -110,6 +110,12 @@ app.get('/api/resume/raw', (req, res) => {
   }
 });
 
+// Serve frontend locally
+if (!isProd) {
+  app.use(express.static(path.join(__dirname, '..')));
+  app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../pages/index.html')));
+}
+
 // Global error handler
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err.message);
