@@ -100,12 +100,11 @@ function buildProjectCard(project) {
     ? '<span class="badge badge-in-progress">⚡ In Progress</span>'
     : '<span class="badge badge-success">✓ Completed</span>';
 
-  const techTags = (JSON.parse(project.techStack || '[]') || project.techStack || []).map
-    ? (Array.isArray(project.techStack)
-        ? project.techStack
-        : JSON.parse(project.techStack))
-      .map(function (t) { return `<span class="tech-tag">${escapeHtml(t)}</span>`; }).join('')
-    : '';
+  const techStack = Array.isArray(project.techStack)
+    ? project.techStack
+    : parseJsonArray(project.techStack);
+  const techTags = techStack
+    .map(function (t) { return `<span class="tech-tag">${escapeHtml(t)}</span>`; }).join('');
 
   const githubBtn = project.githubUrl
     ? `<a href="${escapeHtml(project.githubUrl)}" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer" aria-label="View ${escapeHtml(project.title)} on GitHub">
@@ -232,4 +231,14 @@ function escapeHtml(str) {
     .replace(/>/g,  '&gt;')
     .replace(/"/g,  '&quot;')
     .replace(/'/g,  '&#039;');
+}
+
+function parseJsonArray(value) {
+  if (typeof value !== 'string') return [];
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (err) {
+    return [];
+  }
 }

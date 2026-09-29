@@ -11,6 +11,10 @@ jobs:
   test:
     name: Lint & Test
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "file:./test.db"
+      NODE_ENV: test
+      FRONTEND_ORIGIN: "http://localhost:3000"
 
     steps:
       - name: Checkout repository
@@ -20,10 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-
-      - name: Install root dependencies
-        run: npm ci
 
       - name: Install backend dependencies
         run: npm ci
@@ -33,15 +33,17 @@ jobs:
         run: npm audit --audit-level=high
         working-directory: ./backend
 
-      - name: Run unit tests
-        run: npm run test:unit
+      - name: Validate backend
+        run: npm run check
+        working-directory: ./backend
 
-      - name: Run integration tests
-        run: npm run test:integration
-        env:
-          DATABASE_URL: "file:./test.db"
-          NODE_ENV: test
-          FRONTEND_ORIGIN: "http://localhost:3000"
+      - name: Validate Prisma schema
+        run: npm run prisma:validate
+        working-directory: ./backend
+
+      - name: Generate Prisma client
+        run: npm run prisma:generate
+        working-directory: ./backend
 
   # ── Deploy Frontend (Vercel) ─────────────────────────────
   deploy-frontend:
